@@ -4,12 +4,12 @@ an HTML5 File operating tool which could read from a File or Blob, or write data
 
 ### Installation
 
-####npm
+#### npm
 ```sh
 npm install File-js
 ```
 
-####browser
+#### browser
 ```html
 <script type="text/javascript" src="path-to/File-js.js"></script>
 ```
