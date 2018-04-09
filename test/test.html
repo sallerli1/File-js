@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../button.css" />
+        <script src="../dist/Fiile-js.js"></script>
+    </head>
+    <body>
+        <form>
+            <input id="encrypt" type="file" name="file_upload" multiple style="visibility:hidden" />
+            <input id="decrypt" type="file" name="file_upload" multiple style="visibility:hidden" />
+        </form>
+        <a id="encrypt_trigger" class="button">encrypt</a>
+        <a id="decrypt_trigger" class="button">decrypt</a>
+        <p id="text"></p>
+    </body>
+    <script>
+
+        var encrypt = document.getElementById("encrypt"),
+            decrypt = document.getElementById("decrypt"),
+            enTrigger = document.getElementById("encrypt_trigger"),
+            deTrigger = document.getElementById("decrypt_trigger")
+
+        encrypt.onchange = function() {
+            var files = this.files,
+                len = files.length,
+                url = [],
+                file = null;
+
+            for (let i=0; i<len; i++) {
+                FileJS.readFile(files[i], {
+                    type: 'text',
+                    encoding: 'utf-8'
+                }, (error, str) => {
+                    document.getElementById("text").innerHTML = str
+                })
+            }
+        }
+
+        enTrigger.onclick = function() {
+            encrypt.click()
+        }
+
+        /*decrypt.onchange = function() {
+            var files = this.files,
+                len = files.length,
+                url = [],
+                file = null;
+
+            for (let i=0; i<len; i++) {
+                document.body.insertBefore(reader.getProgressBar(),document.getElementById("text"));
+                var secquence = Promise.resolve();
+                secquence.then(
+                reader.readAsText(files[i],function(buffer) {
+                    file = new File([CryptoJS.AES.decrypt(buffer, "1234567890000000").toString()], files[i].name);
+                    createAndDownloadFile(files[i].name, window.URL.createObjectURL(file))
+                },10*1024));
+            }
+        }
+
+        enTrigger.onclick = function() {
+            encrypt.click()
+        }
+
+        deTrigger.onclick = function() {
+            decrypt.click()
+        }
+
+        function createAndDownloadFile(fileName, url) {
+            var aTag = document.createElement('a');
+            aTag.download = fileName;
+            aTag.href = url;
+            document.body.appendChild(aTag)
+            aTag.click();
+        }*/
+    </script>
+</html>
