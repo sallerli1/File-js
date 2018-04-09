@@ -6,28 +6,28 @@ an HTML5 File operating tool which could read from a File or Blob, or write data
 
 #### npm
 ```sh
-npm install FileJS-js
+npm install html5-file-js
 ```
 
 #### browser
 ```html
-<script type="text/javascript" src="path-to/FileJS-js.js"></script>
+<script type="text/javascript" src="path-to/html5-file-js.js"></script>
 ```
 
 ### Usage
 
 ES6 import
 ```js
-import FileJS from 'FileJS-js'
+import FileJS from 'html5-file-js'
 ```
 CommonJS
 ```js
-const FileJS = require('FileJS-js') 
+const FileJS = require('html5-file-js') 
 ```
 
 Without RequireJS
 ```html
-<script type="text/javascript" src="path-to/FileJS-js.js"></script>
+<script type="text/javascript" src="path-to/html5-file-js.js"></script>
 <script>
     var file = new File("1")
     FileJS.readFile(file, {
