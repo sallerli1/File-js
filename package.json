@@ -17,7 +17,9 @@
     "read",
     "write"
   ],
-  "author": "sallerli1",
+  "author": {
+    "name": "sallerli1"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sallerli1/File-js/issues"
