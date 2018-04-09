@@ -7,7 +7,7 @@ const writeFile = require('./write/writeFile')
 const writeFileProm = require('./write/writeFileProm')
 
 
-var FileIO = {
+var FileJS = {
 	readFile,
 	readFileProm,
 	readChucks,
@@ -16,4 +16,4 @@ var FileIO = {
 	writeFileProm
 }
     
-module.exports = FileIO
+module.exports = FileJS
