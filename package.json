@@ -1,29 +1,29 @@
 {
-  "name": "filereader-js",
+  "name": "File-js",
   "version": "1.0.0",
-  "description": "async file object reading tool",
-  "main": "index.js",
+  "description": "async HTML5 File object operating tool",
+  "main": "dist/File-js.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config build/webpack.config.js",
-    "dev": "webpack-dev-server --config build/webpack.config.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sallerli1/fileReader-js.git"
+    "url": "git+https://github.com/sallerli1/File-js.git"
   },
   "keywords": [
-    "filereader"
+    "FileReader",
+    "HTML5",
+    "File",
+    "read",
+    "write"
   ],
-  "author": "saller",
+  "author": "sallerli1",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sallerli1/fileReader-js/issues"
+    "url": "https://github.com/sallerli1/File-js/issues"
   },
-  "homepage": "https://github.com/sallerli1/fileReader-js#readme",
+  "homepage": "https://github.com/sallerli1/File-js#readme",
   "dependencies": {
-    "crypto-js": "^3.1.9-1",
-    "jquery": "^3.3.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",

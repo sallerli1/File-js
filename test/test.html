@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../button.css" />
-        <script src="../dist/Fiile-js.js"></script>
+        <script src="../dist/File-js.js"></script>
     </head>
     <body>
         <form>
@@ -23,16 +23,13 @@
 
         encrypt.onchange = function() {
             var files = this.files,
-                len = files.length,
-                url = [],
-                file = null;
+                len = files.length
 
             for (let i=0; i<len; i++) {
-                FileJS.readFile(files[i], {
-                    type: 'text',
-                    encoding: 'utf-8'
-                }, (error, str) => {
-                    document.getElementById("text").innerHTML = str
+                FileJS.writeFile(files[i], "11111", {
+                    name: "file"
+                }, (err, file) => {
+                    createAndDownloadFile("file", URL.createObjectURL(file))
                 })
             }
         }
@@ -64,7 +61,7 @@
 
         deTrigger.onclick = function() {
             decrypt.click()
-        }
+        }*/
 
         function createAndDownloadFile(fileName, url) {
             var aTag = document.createElement('a');
@@ -72,6 +69,6 @@
             aTag.href = url;
             document.body.appendChild(aTag)
             aTag.click();
-        }*/
+        }
     </script>
 </html>

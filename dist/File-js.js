@@ -281,6 +281,7 @@
     *   {
     *       encoding: encoding of the text, required if type is 'text'
     *       name: user defined name of the written file
+    *       mimeType: mimeType of the written file
     *   }
     */
 
@@ -289,6 +290,7 @@
     // if the file is provided, append data to the file
     function writeFile(file, data, options, callback) {
         let fileName = options.name || typeof file === 'string' ? file : isType(File, file) ? file.name : 'file',
+            mimeType = options.mimeType || file.type || '',
             content
 
         // if file is not a File object, or not provided
@@ -310,7 +312,9 @@
                     callback(err)
                 } else {
                     content = text + data
-                    callback(err, new File([content], fileName))
+                    callback(err, new File([content], fileName, {
+                        type: mimeType
+                    }))
                 }
             })
         } else if (isType(ArrayBuffer, data)) {
@@ -321,7 +325,9 @@
                     callback(err)
                 } else {
                     content = concatBuffer(buffer, data)
-                    callback(err, new File([content], fileName))
+                    callback(err, new File([content], fileName, {
+                        type: mimeType
+                    }))
                 }
             })
         } else {
