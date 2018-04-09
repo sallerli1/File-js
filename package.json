@@ -1,6 +1,6 @@
 {
   "name": "html5-file-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "async HTML5 File object operating tool",
   "main": "dist/html5-file-js.js",
   "scripts": {
@@ -25,8 +25,7 @@
     "url": "https://github.com/sallerli1/html5-file-js/issues"
   },
   "homepage": "https://github.com/sallerli1/html5-file-js#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
