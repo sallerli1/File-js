@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sallerli1/File-js.git"
+    "url": "git+https://github.com/sallerli1/fileio-js.git"
   },
   "keywords": [
     "FileReader",
@@ -22,9 +22,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sallerli1/File-js/issues"
+    "url": "https://github.com/sallerli1/fileio-js/issues"
   },
-  "homepage": "https://github.com/sallerli1/File-js#readme",
+  "homepage": "https://github.com/sallerli1/fileio-js#readme",
   "dependencies": {
   },
   "devDependencies": {
