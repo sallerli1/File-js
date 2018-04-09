@@ -6,29 +6,8 @@ const readChucksProm = require('./read/readChucksProm')
 const writeFile = require('./write/writeFile')
 const writeFileProm = require('./write/writeFileProm')
 
-/* (function (global, factory) {
-    if (typeof exports === "object") {
-		// CommonJS
-		module.exports = exports = factory();
-	}
-	else if (typeof define === "function" && define.amd) {
-		// AMD
-		define([], factory);
-	}
-	else {
-		// Global (browser)
-		global.FileJs = factory();
-    }
-    
-})(this, function() {
-    console.log(this);
-    var FileJs = {}
-    FileJs.readFile = readFile
-    
-    return FileJs
-})() */
 
-var FileJs = {
+var FileIO = {
 	readFile,
 	readFileProm,
 	readChucks,
@@ -37,4 +16,4 @@ var FileJs = {
 	writeFileProm
 }
     
-module.exports = FileJs
+module.exports = FileIO

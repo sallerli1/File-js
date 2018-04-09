@@ -1,4 +1,4 @@
-# file-js
+# fileio-js
 
 an HTML5 File operating tool which could read from a File or Blob, or write data into a File.
 
@@ -6,31 +6,31 @@ an HTML5 File operating tool which could read from a File or Blob, or write data
 
 #### npm
 ```sh
-npm install File-js
+npm install fileio-js
 ```
 
 #### browser
 ```html
-<script type="text/javascript" src="path-to/file-js.js"></script>
+<script type="text/javascript" src="path-to/fileio-js.js"></script>
 ```
 
 ### Usage
 
 ES6 import
 ```js
-import FileJS from 'file-js'
+import FileIO from 'fileio-js'
 ```
 CommonJS
 ```js
-const FileJS = require('file-js') 
+const FileIO = require('fileio-js') 
 ```
 
 Without RequireJS
 ```html
-<script type="text/javascript" src="path-to/file-js.js"></script>
+<script type="text/javascript" src="path-to/fileio-js.js"></script>
 <script>
     var file = new File("1")
-    FileJs.readFile(file, {
+    FileIO.readFile(file, {
         type: FileJS.types.READ_AS_TEXT
     }, (err, data) => {
         console.log(data)
@@ -62,8 +62,8 @@ read a whole File or Blob into String or ArrayBuffer
 ```js
 var file = new File("1")
 
-FileJs.readFile(file, {
-    type: FileJS.types.READ_AS_TEXT
+FileIO.readFile(file, {
+    type: FileIO.types.READ_AS_TEXT
 }, (err, data) => {
     console.log(data)
 })
@@ -76,8 +76,8 @@ a promisified readFile function
 ```js
 var file = new File("1")
 
-FileJs.readFileProm(file, {
-    type: FileJS.types.READ_AS_TEXT
+FileIO.readFileProm(file, {
+    type: FileIO.types.READ_AS_TEXT
 }).then((data) => {
     console.log(data)
 }, (err) => {
@@ -111,8 +111,8 @@ chained reading operation of a File or Blob, each run a user defined size of chu
 ```js
 var file = new File("1")
 
-FileJs.readChucks(file, {
-    type: FileJS.types.READ_AS_TEXT,
+FileIO.readChucks(file, {
+    type: FileIO.types.READ_AS_TEXT,
     chuckSize: 1
 }, (err, data, loaded, progress) => {
     console.log(data)
@@ -133,8 +133,8 @@ a promisified readChucks function
 ```js
 var file = new File("1")
 
-FileJs.readChucksProm(file, {
-    type: FileJS.types.READ_AS_TEXT,
+FileIO.readChucksProm(file, {
+    type: FileIO.types.READ_AS_TEXT,
     chuckSize: 1
 }, (data, loaded, progress) => {
     console.log(data)
@@ -178,17 +178,17 @@ if the file is provided, append data to the file
 ```js
 var file = new File("1")
 
-FileJs.writeFile(file, "2" {
+FileIO.writeFile(file, "2" {
     name: "filename"
 }, (err, file) => {
     console.log(file)
 })
 
-FileJs.writeFile("filename","2" {}, (err, file) => {
+FileIO.writeFile("filename","2" {}, (err, file) => {
     console.log(file)
 })
 
-FileJs.writeFile("2" {
+FileIO.writeFile("2" {
     name: "filename"
 }, (err, file) => {
     console.log(file)
@@ -202,7 +202,7 @@ a promisified writeFile
 ```js
 var file = new File("1")
 
-FileJs.writeFile(file, "2" {
+FileIO.writeFile(file, "2" {
     name: "filename"
 }).then((file) => {
     console.log(file)
@@ -210,13 +210,13 @@ FileJs.writeFile(file, "2" {
     ...
 })
 
-FileJs.writeFile("filename","2" {}).then((file) => {
+FileIO.writeFile("filename","2" {}).then((file) => {
     console.log(file)
 }, (err) => {
     ...
 })
 
-FileJs.writeFile("2" {
+FileIO.writeFile("2" {
     name: "filename"
 }).then((file) => {
     console.log(file)

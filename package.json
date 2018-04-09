@@ -1,8 +1,8 @@
 {
-  "name": "file-js",
+  "name": "fileio-js",
   "version": "1.0.0",
   "description": "async HTML5 File object operating tool",
-  "main": "dist/File-js.js",
+  "main": "dist/fileio-js.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
