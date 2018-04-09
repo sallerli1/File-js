@@ -1,5 +1,5 @@
 {
-  "name": "File-js",
+  "name": "file-js",
   "version": "1.0.0",
   "description": "async HTML5 File object operating tool",
   "main": "dist/File-js.js",

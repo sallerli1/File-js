@@ -1,4 +1,4 @@
-# File-js
+# file-js
 
 an HTML5 File operating tool which could read from a File or Blob, or write data into a File.
 
@@ -11,23 +11,23 @@ npm install File-js
 
 #### browser
 ```html
-<script type="text/javascript" src="path-to/File-js.js"></script>
+<script type="text/javascript" src="path-to/file-js.js"></script>
 ```
 
 ### Usage
 
 ES6 import
 ```js
-import FileJS from 'File-js'
+import FileJS from 'file-js'
 ```
 CommonJS
 ```js
-const FileJS = require('File-js') 
+const FileJS = require('file-js') 
 ```
 
 Without RequireJS
 ```html
-<script type="text/javascript" src="path-to/File-js.js"></script>
+<script type="text/javascript" src="path-to/file-js.js"></script>
 <script>
     var file = new File("1")
     FileJs.readFile(file, {
