@@ -28,46 +28,56 @@ function writeFile(file, data, options, callback) {
 
     // if file is not a File object, or not provided
     // take the first param as data
-    if (!isType(File, file) && !isType(String, file)) {
+    if (!isType(File, file)) {
+
         callback = options
         options = data
         data = file
-    }
 
-    // check if the data is a String of an ArrayBuffer
-    if (isType(String, data)) {
-        let encoding = options.encoding || DEFAULT.encoding
-        readFile(file, {
-            encoding,
-            type: READ_AS_TEXT
-        }, (err, text) => {
-            if (err) {
-                callback(err)
-            } else {
-                content = text + data
-                callback(err, new File([content], fileName, {
-                    type: mimeType
-                }))
-            }
-        })
-    } else if (isType(ArrayBuffer, data)) {
-        readFile(file, {
-            type: READ_AS_ARRAY_BUFFER
-        }, (err, buffer) => {
-            if (err) {
-                callback(err)
-            } else {
-                content = concatBuffer(buffer, data)
-                callback(err, new File([content], fileName, {
-                    type: mimeType
-                }))
-            }
-        })
+        if (!isType(String, data) && !isType(ArrayBuffer, data)) {
+            console.warn(`${data} is not a String or an ArrayBuffer`)
+            callback(new DOMException(`${data} is not a String or an ArrayBuffer`, `TypeError`))
+        }
+
+        callback(null, new File([data], fileName, {
+            type: mimeType
+        }))
     } else {
+        // check if the data is a String of an ArrayBuffer
+        if (isType(String, data)) {
+            let encoding = options.encoding || DEFAULT.encoding
+            readFile(file, {
+                encoding,
+                type: READ_AS_TEXT
+            }, (err, text) => {
+                if (err) {
+                    callback(err)
+                } else {
+                    content = text + data
+                    callback(err, new File([content], fileName, {
+                        type: mimeType
+                    }))
+                }
+            })
+        } else if (isType(ArrayBuffer, data)) {
+            readFile(file, {
+                type: READ_AS_ARRAY_BUFFER
+            }, (err, buffer) => {
+                if (err) {
+                    callback(err)
+                } else {
+                    content = concatBuffer(buffer, data)
+                    callback(err, new File([content], fileName, {
+                        type: mimeType
+                    }))
+                }
+            })
+        } else {
 
-        //the written data can only be a String or an ArrayBuffer
-        console.warn(`${data} is not a String or an ArrayBuffer`)
-        callback(new DOMException(`${data} is not a String or an ArrayBuffer`, `TypeError`))
+            //the written data can only be a String or an ArrayBuffer
+            console.warn(`${data} is not a String or an ArrayBuffer`)
+            callback(new DOMException(`${data} is not a String or an ArrayBuffer`, `TypeError`))
+        }
     }
 }
 
