@@ -289,18 +289,30 @@
     // if the file is not provided, create a new file with data
     // if the file is provided, append data to the file
     function writeFile(file, data, options, callback) {
-        let fileName = options.name || data.name || isType(File, file) ? file.name : isType(String, file) ? isType(String, data) ? file : 'file' : "file",
-            mimeType = options.mimeType || file.type || '',
-            content
-    
         // if file is not a File object, or not provided
         // take the first param as data
         if (!isType(File, file) && !(isType(String, file) && isType(String, data))) {
-    
             callback = options
             options = data
             data = file
-    
+        }
+
+        let fileName = options.name,
+            mimeType = options.mimeType || file.type || '',
+            content
+
+        if (!fileName) {
+            if (isType(File, file)) {
+                fileName = file.name
+            } else if (isType(String, file) && !isType(data, Object)) {
+                fileName = file
+            } else {
+                fileName = 'file'
+            }
+        }
+
+        if (!isType(File, file)) {
+
             if (!isType(String, data) && !isType(ArrayBuffer, data)) {
                 console.warn(`${data} is not a String or an ArrayBuffer`)
                 callback(new DOMException(`${data} is not a String or an ArrayBuffer`, `TypeError`))
