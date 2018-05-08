@@ -289,13 +289,13 @@
     // if the file is not provided, create a new file with data
     // if the file is provided, append data to the file
     function writeFile(file, data, options, callback) {
-        let fileName = options.name || typeof file === 'string' ? file : isType(File, file) ? file.name : 'file',
+        let fileName = options.name || isType(File, file) ? file.name : isType(String, file) ? isType(String, data) ? file : 'file' : "file",
             mimeType = options.mimeType || file.type || '',
             content
     
         // if file is not a File object, or not provided
         // take the first param as data
-        if (!isType(File, file)) {
+        if (!isType(File, file) && !(isType(String, file) && isType(String, data))) {
     
             callback = options
             options = data
