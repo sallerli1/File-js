@@ -19,6 +19,8 @@ var FileJS = {
 	readChucksProm,
 	writeFile,
 	writeFileProm,
+	encriptFile,
+	decriptFile,
 	rename,
 	util,
 	types: {
