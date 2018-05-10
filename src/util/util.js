@@ -59,14 +59,13 @@ function getType(fn) {
 
 // get type string of a variable
 function getTypeOf(value) {
-    let fn = Object.getPrototypeOf(value).constructor
+    let fn = value === undefined ? undefined : Object.getPrototypeOf(value).constructor
     return getType(fn)
 }
 
 // check if a variable's type is the type provided
 function isType(type, value) {
-    let fn = value === undefined ? undefined : Object.getPrototypeOf(value).constructor
-    return getType(fn) === getType(type)
+    return getTypeOf(value) === getType(type)
 }
 
 // concat two ArrayBuffers and return a new buffer
