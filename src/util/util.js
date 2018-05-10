@@ -50,6 +50,9 @@ function createView(buffer, type) {
 
 // get type string of a construtor function
 function getType(fn) {
+    if (fn === undefined) {
+        return undefined
+    }
     const match = fn && fn.toString().match(/^\s*function (\w+)/)
     return match ? match[1] : ''
 }
@@ -62,7 +65,7 @@ function getTypeOf(value) {
 
 // check if a variable's type is the type provided
 function isType(type, value) {
-    let fn = Object.getPrototypeOf(value).constructor
+    let fn = value === undefined ? undefined : Object.getPrototypeOf(value).constructor
     return getType(fn) === getType(type)
 }
 
