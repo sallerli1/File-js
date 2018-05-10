@@ -385,6 +385,7 @@
         writeFile,
         writeFileProm,
         rename,
+        concatBuffer,
         types: {
             READ_AS_TEXT,
             READ_AS_ARRAY_BUFFER,
