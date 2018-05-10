@@ -19,6 +19,13 @@ const Buffer = require('buffer').Buffer
 * this function returns promise whose value is the encripted file
 */
 function encriptFile(file, algrithm, key, callback, options) {
+
+    if (isType(Function, callback)) {
+        options = options || {}
+    } else if (isType(Object, callback)) {
+        options = callback
+    }
+
     let out = [],
         cipher = Crypto.createCipher(algrithm, key)
         

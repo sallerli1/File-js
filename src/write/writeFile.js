@@ -24,10 +24,20 @@ const { DEFAULT } = require('../constants/constants.js')
 function writeFile(file, data, callback, options) {
     // if file is not a File object, or not provided
     // take the first param as data
-    if (!isType(File, file) && !(isType(String, file) && isType(String, data))) {
-        options = options || callback || {}
-        callback = data
+    if (!isType(File, file) && !(isType(String, file) && (isType(String, data) || isType(ArrayBuffer, data)))) {
+        if (isType(Function, data)) {
+            options = callback || {}
+            callback = data
+        } else if (isType(Object, data)) {
+            options = data
+        }
         data = file
+    } else {
+        if (isType(Function, callback)) {
+            options = options || {}
+        } else if (isType(Object, callback)) {
+            options = callback
+        }
     }
 
     let fileName = options.name,
