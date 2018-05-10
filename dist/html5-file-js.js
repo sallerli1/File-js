@@ -292,7 +292,7 @@
         // if file is not a File object, or not provided
         // take the first param as data
         if (!isType(File, file) && !(isType(String, file) && isType(String, data))) {
-            callback = options
+            callback = callback || options
             options = data
             data = file
         }
