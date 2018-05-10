@@ -13,8 +13,10 @@ const { createView } = require('../util/util.js')
 *   }
 */
 
-function readFile(file, options, callback) {
+function readFile(file, callback, options) {
     const reader = new FileReader();
+
+    options = options || {}
 
     let type = options.type || DEFAULT.type
 

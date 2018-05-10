@@ -3,7 +3,7 @@ const readChucks = require('./readChucks.js')
 
 // a promisified readChuck
 // the calback function takes three params : data, loaded, progress
-function readChucksProm(file, options, callback) {
+function readChucksProm(file, callback, options) {
 
     return new Promise((resolve, reject) => {
         var cb = function (err, data, loaded, progress) {
@@ -18,7 +18,7 @@ function readChucksProm(file, options, callback) {
             }
         }
 
-        readChucks(file, options, cb)
+        readChucks(file, cb, options)
     })
 
 }

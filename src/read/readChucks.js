@@ -16,8 +16,10 @@ const blobSlice = require('../util/util.js').blobSlice
 *       bufferType: type of the typedArray of the ArrayBuffer, required if type is 'arrayBuffer'
 *   }
 */
-function readChucks(file, options, callback) {
+function readChucks(file, callback, options) {
     const reader = new FileReader()
+
+    options = options || {}
 
     var chuckSize = options.chuckSize || DEFAULT.chuckSize,
         type = options.type || DEFAULT.type,

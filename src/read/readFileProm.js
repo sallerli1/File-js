@@ -4,7 +4,7 @@ const readFile = require('./readFile.js')
 // promisified readFile operation
 function readFileProm(file, options) {
     return new Promise((resolve, reject) => {
-        readFile(file, options, (err, data) => {
+        readFile(file, (err, data) => {
             if (err) {
                 // reject if any reader err occured
                 return reject(err)
@@ -12,7 +12,7 @@ function readFileProm(file, options) {
                 // resolve the read contents for a then
                 resolve(data)
             }
-        })
+        }, options)
     })
 }
 

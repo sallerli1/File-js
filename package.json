@@ -15,7 +15,9 @@
     "HTML5",
     "File",
     "read",
-    "write"
+    "write",
+    "encript",
+    "decript"
   ],
   "author": {
     "name": "sallerli1"
@@ -25,7 +27,10 @@
     "url": "https://github.com/sallerli1/html5-file-js/issues"
   },
   "homepage": "https://github.com/sallerli1/html5-file-js#readme",
-  "dependencies": {},
+  "dependencies": {
+    "buffer": "^5.1.0",
+    "crypto-browserify": "^3.12.0"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",

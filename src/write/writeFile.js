@@ -21,12 +21,12 @@ const { DEFAULT } = require('../constants/constants.js')
 // if file is a string, it's taken as the filename of the new file
 // if the file is not provided, create a new file with data
 // if the file is provided, append data to the file
-function writeFile(file, data, options, callback) {
+function writeFile(file, data, callback, options) {
     // if file is not a File object, or not provided
     // take the first param as data
     if (!isType(File, file) && !(isType(String, file) && isType(String, data))) {
-        callback = callback || options
-        options = data
+        options = options || callback || {}
+        callback = data
         data = file
     }
 
