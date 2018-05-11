@@ -28,8 +28,11 @@ function encriptFile(file, callback, options) {
         options = callback
     }
 
+    let key = isType(ArrayBuffer, options.key) ? Buffer.from(options.key) : options.key,
+    iv = isType(ArrayBuffer, options.iv) ? Buffer.from(options.iv) : options.iv
+
     let out = [],
-        cipher = Crypto.createCipheriv(options.algrithm, options.key, options.iv)
+        cipher = Crypto.createCipheriv(options.algrithm, key, iv)
         
     return readChucksProm(file, (data, loaded, progress) => {
         if (isType(Function, callback)) {

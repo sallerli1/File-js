@@ -28,8 +28,12 @@ function decriptFile(file, callback, options) {
         options = callback
     }
 
+
+    let key = isType(ArrayBuffer, options.key) ? Buffer.from(options.key) : options.key,
+        iv = isType(ArrayBuffer, options.iv) ? Buffer.from(options.iv) : options.iv
+
     let out = [],
-        decipher = Crypto.createDecipheriv(options.algrithm, options.key, options.iv)
+        decipher = Crypto.createDecipheriv(options.algrithm, key, iv)
 
     return readChucksProm(file, (data, loaded, progress) => {
         if (isType(Function, callback)) {
