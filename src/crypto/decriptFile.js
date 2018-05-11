@@ -13,13 +13,15 @@ const Buffer = require('buffer').Buffer
 *   {
 *       chuckSize: size(KB) of chucks read each run
 *       name: user defined name of the written file
+*       algrithm： 
+*       key,：
 *   }
 * callback takes data, loaded, progress as params
 * 
 * this function returns promise whose value is the encripted file
 */
-function decriptFile(file, algrithm, key, callback, options) {
-    
+function decriptFile(file, callback, options) {
+
     if (isType(Function, callback)) {
         options = options || {}
     } else if (isType(Object, callback)) {
@@ -27,8 +29,8 @@ function decriptFile(file, algrithm, key, callback, options) {
     }
 
     let out = [],
-        decipher = Crypto.createDecipher(algrithm, key)
-        
+        decipher = Crypto.createDecipheriv(options.algrithm, options.key, options.iv)
+
     return readChucksProm(file, (data, loaded, progress) => {
         if (isType(Function, callback)) {
             callback(data, loaded, progress)
@@ -36,18 +38,18 @@ function decriptFile(file, algrithm, key, callback, options) {
 
         out.push(decipher.update(Buffer.from(data)))
     }, {
-        type: 'buffer',
-        chuckSize: options && options.chuckSize
-    }).then(() => {
+            type: 'buffer',
+            chuckSize: options && options.chuckSize
+        }).then(() => {
 
-        out.push(decipher.final())
-        let outBuffer = Buffer.concat(out)
-        return writeFileProm(outBuffer.buffer, {
-            name: (options && options.name) || file.name
-        }).then(file => {
-            return file
+            out.push(decipher.final())
+            let outBuffer = Buffer.concat(out)
+            return writeFileProm(outBuffer.buffer, {
+                name: (options && options.name) || file.name
+            }).then(file => {
+                return file
+            })
         })
-    })
 }
 
 module.exports = decriptFile

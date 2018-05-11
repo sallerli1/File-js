@@ -227,7 +227,7 @@ change the name of a file
 encription and decription are supported after version 1.1.*
 these operations are based on implementations of crypto-browserify
 
-##### encriptFile(file: File, algrithm: String, key: ArrayBuffer|String, callback: Function, options: Object)
+##### encriptFile(file: File, callback: Function, options: Object)
 
 
  encript the given file using a certain algrithm which is dependent on OpenSSL
@@ -238,6 +238,9 @@ these operations are based on implementations of crypto-browserify
 >   {
 >       chuckSize: size(KB) of chucks read each run
 >       name: user defined name of the written file
+>       algrithm: an string refering to the encription algrithm, fro example: aes256 aes128 aes-128-cbc aes-128-gcm
+>       key: 
+>       iv:
 >   }
 > callback takes data, loaded, progress as params
 > 
@@ -246,10 +249,13 @@ these operations are based on implementations of crypto-browserify
 
 ```js
 var file = new File(["1"], '1')
-FileJS.encriptFile(file, 'aes-128-cbc', 'a secrect', (data, loaded, progress)=> {
+FileJS.encriptFile(file, (data, loaded, progress)=> {
     console.log(progress)
 }, {
-    name: 'encriptedFile'
+    name: 'encriptedFile',
+    altrithm:  'aes-128-cbc',
+    key:  'a secrect',
+    iv: 'iv' //must be 16 bit
 }).then(encriptedFile => {
     ...
 })
@@ -266,6 +272,9 @@ FileJS.encriptFile(file, 'aes-128-cbc', 'a secrect', (data, loaded, progress)=> 
 >   {
 >       chuckSize: size(KB) of chucks read each run
 >       name: user defined name of the written file
+>       algrithm: an string refering to the encription algrithm, fro example: aes256 aes128 aes-128-cbc aes-128-gcm
+>       key: 
+>       iv:
 >   }
 > callback takes data, loaded, progress as params
 > 
@@ -273,11 +282,14 @@ FileJS.encriptFile(file, 'aes-128-cbc', 'a secrect', (data, loaded, progress)=> 
 
 
 ```js
-FileJS.decriptFile(encriptedFile, 'aes-128-cbc', 'a secrect', (data, loaded, progress)=> {
+FileJS.decriptFile(encriptedFile, (data, loaded, progress)=> {
     console.log(progress)
 }, {
-    name: 'decriptedFile'
-}).then(encriptedFile => {
+    name: 'decriptedFile',
+    altrithm:  'aes-128-cbc',
+    key:  'a secrect',
+    iv: 'iv' //must be 16 bit
+}).then(decriptedFile => {
     ...
 })
 ```

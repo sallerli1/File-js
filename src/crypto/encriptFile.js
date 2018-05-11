@@ -13,12 +13,14 @@ const Buffer = require('buffer').Buffer
 *   {
 *       chuckSize: size(KB) of chucks read each run
 *       name: user defined name of the written file
+*       algrithm： 
+*       key,：
 *   }
 * callback takes data, loaded, progress as params
 * 
 * this function returns promise whose value is the encripted file
 */
-function encriptFile(file, algrithm, key, callback, options) {
+function encriptFile(file, callback, options) {
 
     if (isType(Function, callback)) {
         options = options || {}
@@ -27,7 +29,7 @@ function encriptFile(file, algrithm, key, callback, options) {
     }
 
     let out = [],
-        cipher = Crypto.createCipher(algrithm, key)
+        cipher = Crypto.createCipheriv(options.algrithm, options.key, options.iv)
         
     return readChucksProm(file, (data, loaded, progress) => {
         if (isType(Function, callback)) {
