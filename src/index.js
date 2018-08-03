@@ -5,8 +5,6 @@ const readChucks = require('./read/readChucks')
 const readChucksProm = require('./read/readChucksProm')
 const writeFile = require('./write/writeFile')
 const writeFileProm = require('./write/writeFileProm')
-const encriptFile = require('./crypto/encriptFile')
-const decriptFile = require('./crypto/decriptFile')
 const { rename } = require('./other/other')
 const util = require('./util/util')
 const constants = require('./constants/constants')
@@ -39,5 +37,15 @@ var FileJS = {
         FLOAT64: constants.FLOAT64
 	}
 }
-    
+
+FileJS.use = function (plugin) {
+	for (const key in plugin) {
+		if (plugin.hasOwnProperty(key)) {
+			if (typeof FileJS[key] === 'undefined') {
+				FileJS[key] = plugin[key]
+			}
+		}
+	}
+}
+
 module.exports = FileJS
