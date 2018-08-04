@@ -40,7 +40,9 @@ FileJS.use = function (plugin) {
 	for (const key in plugin) {
 		if (plugin.hasOwnProperty(key)) {
 			if (typeof FileJS[key] === 'undefined') {
-				FileJS[key] = plugin[key]
+				FileJS[key] = function () {
+					plugin[key](FileJS, ...arguments)
+				}
 			}
 		}
 	}
