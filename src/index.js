@@ -41,7 +41,7 @@ FileJS.use = function (plugin) {
 		if (plugin.hasOwnProperty(key)) {
 			if (typeof FileJS[key] === 'undefined') {
 				FileJS[key] = function () {
-					plugin[key](FileJS, ...arguments)
+					return plugin[key](FileJS, ...arguments)
 				}
 			}
 		}
